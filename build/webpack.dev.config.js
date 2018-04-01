@@ -1,12 +1,12 @@
+const {devtool} = require('../configs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const { resolve } = require('./utils');
+const {resolve} = require('./utils');
 
 let configs = {
     mode: 'development',
-    devtool: 'inline-source-map',
-    entry: resolve('src/index.js'),
+    devtool,
+    entry: [resolve('src/index.js')],
     output: {
         path: resolve('output'),
         filename: 'adb.bundle.js'
@@ -17,8 +17,8 @@ let configs = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: 'css-loader'
+                test: /\.less$/,
+                use: ['style-loader', 'css-loader', 'less-loader']
             },
             {
                 test: /\.(js|jsx)$/,
@@ -27,13 +27,9 @@ let configs = {
             }
         ]
     },
-    devServer: {
-        hot: true
-    },
     plugins: [
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        // new UglifyJsPlugin(),
         new HtmlWebpackPlugin({
             title: 'AdbPanel',
             filename: 'index.html',
