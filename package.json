@@ -1,0 +1,33 @@
+{
+  "name": "adbpanel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "npm run start:dev-server && npm run start:electron",
+    "start:dev-server": "NODE_ENV=development webpack-dev-server --host 127.0.0.1 --port 8080 --config ./build/webpack.dev.config.js",
+    "start:electron": "NODE_ENV=development electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config ./build/webpack.dev.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "7.0.0-beta.42",
+    "@babel/preset-env": "7.0.0-beta.42",
+    "@babel/preset-react": "7.0.0-beta.42",
+    "babel-core": "6.26.0",
+    "babel-loader": "8.0.0-beta.2",
+    "electron": "1.8.4",
+    "react": "16.3.0",
+    "react-dom": "16.3.0",
+    "webpack": "4.4.1"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "3.1.0",
+    "uglifyjs-webpack-plugin": "1.2.4",
+    "webpack-cli": "2.0.13",
+    "webpack-dev-server": "3.1.1"
+  }
+}
