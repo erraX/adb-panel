@@ -1,8 +1,7 @@
-const configs = require("./configs");
-const WebpackDevServer = require("webpack-dev-server");
-const webpack = require("webpack");
-const webpackConfig = require("./build/webpack.dev.config");
-const $events = require('./src/utils/eventEmitter').$event;
+import configs from './configs';
+import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import webpackConfig from './build/webpack.dev.config';
 
 const address = `http://${configs.host}:${configs.port}`;
 
@@ -25,5 +24,9 @@ server.listen(configs.port, configs.host, err => {
 });
 
 // Start electron
-const { spawn } = require("child_process");
-spawn("electron", ["."]);
+const {spawn} = require('child_process');
+const electronProcess = spawn('electron', ['-r', '@babel/register', '.']);
+
+// Output log
+electronProcess.stdout.pipe(process.stdout);
+electronProcess.stderr.pipe(process.stdout);

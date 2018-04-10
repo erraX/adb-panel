@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "NODE_ENV=development babel-node dev-server.js",
+    "dev": "NODE_ENV=development node -r @babel/register dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./build/webpack.dev.config.js"
   },
@@ -17,7 +17,6 @@
     "@babel/preset-env": "7.0.0-beta.42",
     "@babel/preset-react": "7.0.0-beta.42",
     "adbkit": "2.11.0",
-    "babel-core": "6.26.0",
     "babel-loader": "8.0.0-beta.2",
     "css-loader": "^0.28.11",
     "electron": "1.8.4",
@@ -31,6 +30,7 @@
     "webpack": "4.4.1"
   },
   "devDependencies": {
+    "@babel/register": "^7.0.0-beta.44",
     "html-webpack-plugin": "3.1.0",
     "uglifyjs-webpack-plugin": "1.2.4",
     "webpack-cli": "2.0.13",

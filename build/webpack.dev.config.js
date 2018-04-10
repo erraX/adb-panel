@@ -7,6 +7,7 @@ let configs = {
     mode: 'development',
     devtool,
     entry: [resolve('src/index.js')],
+    target: 'electron-renderer',
     output: {
         path: resolve('output'),
         filename: 'adb.bundle.js'

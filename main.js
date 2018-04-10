@@ -1,13 +1,16 @@
-const configs = require("./configs");
-const electron = require("electron");
+import configs from './configs';
+import electron from 'electron';
+import path from 'path';
+import url from 'url';
+import adbService from './service/adbService';
+
 // Module to control application life.
 const app = electron.app;
 const Menu = electron.Menu;
+
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
-const path = require("path");
-const url = require("url");
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -74,3 +77,4 @@ app.on("activate", function() {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+adbService.start();
