@@ -1,44 +1,21 @@
 import React, {Component} from 'react';
+import {hot} from 'react-hot-loader';
 import PropTypes from 'prop-types';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import createEventEmitter from '../utils/eventEmitter';
+import {BrowserRouter as Router, Route, Switch, Link, Redirect} from 'react-router-dom';
 import ControlPanel from './ControlPanel';
 import WaitForConnection from './WaitForConnection';
 
 import './App.less';
 
-export class App extends Component {
-    static childContextTypes = {
-        $events: PropTypes.object
-    }
-
-    state = {
-        connected: true
-    }
-
-    getChildContext() {
-        return {
-            $events: createEventEmitter()
-        };
-    }
-
-    componentDidMount() {
-        this.$events.on('connected', () => {
-            this.setState({connected: true});
-        });
-
-        this.$events.on('disconnected', () => {
-            this.setState({connected: false});
-        });
-    }
-
+class App extends Component {
     render() {
-        const {connected} = this.state;
-
         return (
             <Router>
-                <Router path="/idle" component={WaitForConnection}></Router>
-                <Router path="/main" component={ControlPanel}></Router>
+                <Switch>
+                    <Redirect exact from='/' to='/idle' />
+                    <Route path="/idle" exact component={WaitForConnection} />
+                    <Route path="/main" component={ControlPanel} />
+                </Switch>
             </Router>
         );
     }

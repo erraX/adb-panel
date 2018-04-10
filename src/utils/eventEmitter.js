@@ -1,4 +1,4 @@
-export createEventEmitter = () => ({
+export const createEventEmitter = () => ({
     events: Object.create(null),
 
     emit(event, data) {
@@ -11,13 +11,15 @@ export createEventEmitter = () => ({
         }
 
         this.events[event].push([handler, context]);
-    }
+    },
 
     off(event, handler) {
-        const i = (this.events[event] || []).findIndex([h] => h ==== handler);
+        const i = (this.events[event] || []).findIndex(([h]) => h === handler);
 
         if (i > -1) {
             this.events[event].splice(i, 1);
         }
     }
 });
+
+export const $events = createEventEmitter();

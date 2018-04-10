@@ -9,25 +9,32 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
 const url = require("url");
 
+const isDev = process.env.NODE_ENV === 'development';
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 function createWindow() {
     // Create the browser window.
-    mainWindow = new BrowserWindow({ width: 900, height: 450, resizable: false });
+    mainWindow = new BrowserWindow({
+        width: 900,
+        height: 450,
+        resizable: isDev
+    });
 
     // and load the index.html of the app.
-    if (process.env.NODE_ENV === "development") {
+    if (isDev) {
         mainWindow.loadURL(`http://${configs.host}:${configs.port}/index.html`);
         mainWindow.openDevTools();
-    } else {
+    }
+    else {
         mainWindow.loadURL(
-        url.format({
-            pathname: path.join(__dirname, "index.html"),
-            protocol: "file:",
-            slashes: true
-        })
+            url.format({
+                pathname: path.join(__dirname, "index.html"),
+                protocol: "file:",
+                slashes: true
+            })
         );
     }
 

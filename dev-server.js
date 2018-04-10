@@ -2,6 +2,7 @@ const configs = require("./configs");
 const WebpackDevServer = require("webpack-dev-server");
 const webpack = require("webpack");
 const webpackConfig = require("./build/webpack.dev.config");
+const $events = require('./src/utils/eventEmitter').$event;
 
 const address = `http://${configs.host}:${configs.port}`;
 
