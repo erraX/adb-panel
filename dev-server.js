@@ -5,12 +5,13 @@ import webpackConfig from './build/webpack.dev.config';
 
 const address = `http://${configs.host}:${configs.port}`;
 
-// Start webpack server
+// Initialize and start webpack server
 const compiler = webpack(webpackConfig);
 webpackConfig.entry.unshift(
   `webpack-dev-server/client?${address}/`,
   "webpack/hot/dev-server"
 );
+
 const server = new WebpackDevServer(compiler, {
     hot: true
 });

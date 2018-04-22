@@ -17,11 +17,13 @@
     "@babel/preset-env": "7.0.0-beta.42",
     "@babel/preset-react": "7.0.0-beta.42",
     "adbkit": "2.11.0",
-    "babel-loader": "8.0.0-beta.2",
+    "babel-loader": "^8.0.0-beta.2",
     "css-loader": "^0.28.11",
     "electron": "1.8.4",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
+    "mobx": "^4.2.0",
+    "mobx-react": "^5.0.0",
     "react": "16.3.0",
     "react-dom": "16.3.0",
     "react-hot-loader": "^4.0.0",
@@ -30,6 +32,7 @@
     "webpack": "4.4.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.0.0-beta.44",
     "@babel/register": "^7.0.0-beta.44",
     "html-webpack-plugin": "3.1.0",
     "uglifyjs-webpack-plugin": "1.2.4",
