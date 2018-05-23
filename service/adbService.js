@@ -10,10 +10,10 @@ export default {
 
             setTimeout(() => {
                 event.sender.send('connected', {
-                    id: 'XIAOMI_DEVICE',
-                    name: 'xiaomi mix2'
+                    name: 'xiaomi mix2',
+                    model: '123123',
+                    device: 'XIAOMI_DEVICE'
                 });
-                console.log('device connected');
             }, 2000);
 
             // setTimeout(() => {

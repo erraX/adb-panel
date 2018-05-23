@@ -2,10 +2,10 @@ import {observable, computed} from 'mobx';
 
 export default class Device {
 
-    constructor({id, name, icon}) {
-        this.id = id;
+    setDevice({name, model, device}) {
+        this.model = model;
         this.name = name;
-        this.icon = icon;
+        this.device = device;
     }
 
     /**
@@ -13,19 +13,19 @@ export default class Device {
      *
      * @type {string}
      */
-    @observable id = null;
+    @observable name = null;
 
     /**
      * 设备名
      *
      * @type {string}
      */
-    @observable name = null;
+    @observable model = null;
 
     /**
      * 设备ICON
      *
      * @type {string}
      */
-    @observable icon = null;
+    @observable device = null;
 }

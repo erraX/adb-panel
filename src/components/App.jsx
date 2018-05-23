@@ -16,7 +16,6 @@ export const store = new Store();
 class App extends Component {
     componentDidMount() {
         const router = this.refs.router;
-        window.router = router;
 
         ipcRenderer.on('disconnected', (event, args) => {
             console.log('disconnected');
@@ -24,7 +23,8 @@ class App extends Component {
         });
 
         ipcRenderer.on('connected', (event, args) => {
-            console.log('connected');
+            console.log('connected', args);
+            store.device.setDevice(args);
             router.history.push('main');
         });
 
