@@ -2,10 +2,13 @@ import {observable, computed} from 'mobx';
 import Device from './Device';
 
 export default class Store {
+
+    /**
+     * 设备信息
+     *
+     * @type {Device}
+     */
     @observable device = new Device();
-    @observable name = 'asdfasdf';
-    @observable price = 0;
-    @observable amount = 1;
 
     /**
      * 当前选择的设备ID
@@ -21,7 +24,7 @@ export default class Store {
      */
     @computed
     get isConnected() {
-        return !!this.devices.name;
+        return !!this.device.name;
     }
 
     /**

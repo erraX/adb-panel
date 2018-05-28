@@ -2,7 +2,7 @@ import configs from './configs';
 import electron from 'electron';
 import path from 'path';
 import url from 'url';
-import adbService from './service/adbService';
+import AdbService from './service/AdbService';
 
 // Module to control application life.
 const app = electron.app;
@@ -21,8 +21,8 @@ let mainWindow;
 function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 900,
-        height: 450,
+        width: 450,
+        height: 765,
         resizable: isDev
     });
 
@@ -77,4 +77,5 @@ app.on("activate", function() {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-adbService.start();
+const adbService = new AdbService();
+adbService.init();

@@ -8,10 +8,31 @@ import ControlPanel from './ControlPanel';
 import WaitForConnection from './WaitForConnection';
 import DeviceSelection from './DeviceSelection';
 import Store from '../stores';
+import { injectGlobal } from 'styled-components';
+import { CLIENT_RENEG_WINDOW } from 'tls';
 
-import './App.less';
+injectGlobal`
+    body {
+        font-family: "Avenir Next", Helvetica, Arial, "Lantinghei SC", "Microsoft YaHei", sans-serif;
+        height: 720px;
+        width: 450px;
+        overflow: hidden;
+        background-color: #eeeeee;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+`;
 
 export const store = new Store();
+
+window.store = store;
 
 class App extends Component {
     componentDidMount() {

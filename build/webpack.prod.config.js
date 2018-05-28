@@ -18,8 +18,16 @@ let configs = {
     module: {
         rules: [
             {
-                test: /\.less$/,
-                use: ['style-loader', 'css-loader', 'less-loader']
+                test: /\.(svg|jpeg|png)$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                      loader: 'url-loader',
+                      options: {
+                          limit: 8192
+                      }
+                    }
+                ]
             },
             {
                 test: /\.(js|jsx)$/,

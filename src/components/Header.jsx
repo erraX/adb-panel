@@ -1,12 +1,20 @@
 import React, {Component} from 'react';
-import './Header.less';
+import styled from 'styled-components';
+
+const Header = styled.header`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+`;
 
 export default class Header extends Component {
     render() {
         return (
-            <header className="Header">
+            <Header>
                 Header
-            </header>
+            </Header>
         );
     }
 }
